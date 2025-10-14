@@ -11,7 +11,6 @@ import time
 import math
 import threading
 import platform
-import psutil
 import json
 import urllib.request
 import urllib.error
@@ -19,6 +18,67 @@ import csv
 from datetime import datetime, timedelta
 from collections import deque
 from pathlib import Path
+
+# Check for required dependencies with helpful install instructions
+try:
+    import psutil
+except ImportError:
+    print("\n❌ ERROR: Missing required module 'psutil'")
+    print("\n📦 INSTALL INSTRUCTIONS:\n")
+
+    # Detect OS and provide specific instructions
+    if sys.platform == 'linux':
+        # Check if it's Kali/Debian-based or other Linux
+        try:
+            with open('/etc/os-release', 'r') as f:
+                os_info = f.read().lower()
+                if 'kali' in os_info or 'debian' in os_info or 'ubuntu' in os_info:
+                    print("  Option 1 (Recommended - via apt):")
+                    print("    sudo apt install python3-psutil python3-blessed")
+                    print("\n  Option 2 (via pip with override):")
+                    print("    pip3 install psutil blessed --break-system-packages")
+                else:
+                    print("  sudo pip3 install psutil blessed")
+        except:
+            print("  sudo pip3 install psutil blessed")
+    elif sys.platform == 'win32':
+        print("  pip install psutil blessed")
+    else:  # macOS
+        print("  pip3 install psutil blessed")
+
+    print("\n  Or install from requirements.txt:")
+    print("    pip3 install -r requirements.txt --break-system-packages")
+    print("\n")
+    sys.exit(1)
+
+try:
+    from blessed import Terminal
+except ImportError:
+    print("\n❌ ERROR: Missing required module 'blessed'")
+    print("\n📦 INSTALL INSTRUCTIONS:\n")
+
+    if sys.platform == 'linux':
+        try:
+            with open('/etc/os-release', 'r') as f:
+                os_info = f.read().lower()
+                if 'kali' in os_info or 'debian' in os_info or 'ubuntu' in os_info:
+                    print("  Option 1 (Recommended - via apt):")
+                    print("    sudo apt install python3-blessed python3-psutil")
+                    print("\n  Option 2 (via pip with override):")
+                    print("    pip3 install blessed psutil --break-system-packages")
+                else:
+                    print("  sudo pip3 install blessed psutil")
+        except:
+            print("  sudo pip3 install blessed psutil")
+    elif sys.platform == 'win32':
+        print("  pip install blessed psutil")
+    else:
+        print("  pip3 install blessed psutil")
+
+    print("\n  Or install from requirements.txt:")
+    print("    pip3 install -r requirements.txt --break-system-packages")
+    print("\n")
+    sys.exit(1)
 
 # Enable Windows VT100 terminal for RGB colors and UTF-8
 if sys.platform == 'win32':
@@ -31,8 +91,6 @@ if sys.platform == 'win32':
         sys.stdout.reconfigure(encoding='utf-8')
     except:
         pass
-
-from blessed import Terminal
 
 # Version follows Semantic Versioning (SemVer): MAJOR.MINOR.PATCH
 # MAJOR: Breaking changes, MINOR: New features, PATCH: Bug fixes

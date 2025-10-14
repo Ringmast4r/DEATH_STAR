@@ -215,46 +215,108 @@ VERDICT:
 
 ## 🚀 Quick Start
 
-### Prerequisites
+Choose your platform:
 
-- Python 3.7 or higher
-- Windows 10/11 with Firewall logging enabled **OR** Linux with UFW/iptables
+---
 
-### Option 1: Run the Executable (Recommended)
+### 🪟 **WINDOWS INSTALLATION**
 
-**Build the EXE once:**
-```bash
-# Navigate to DEATH STAR folder
+**Step 1: Clone the repository**
+```cmd
+git clone https://github.com/Ringmast4r/DEATH_STAR.git
 cd DEATH_STAR
-
-# Install build dependencies
-pip install -r requirements-build.txt
-
-# Build executable (creates dist\DEATH_STAR.exe)
-build.bat
 ```
 
-**Run the EXE:**
-1. Double-click `dist\DEATH_STAR.exe`
-2. Click **"Yes"** when Windows UAC prompts for admin rights
-3. The dashboard launches with full firewall log access!
-
-**Why admin rights?** Windows firewall logs are stored in `C:\Windows\System32\LogFiles\` which requires administrator privileges to read.
-
-### Option 2: Run Python Script
-
-```bash
-# Navigate to DEATH STAR folder
-cd DEATH_STAR
-
-# Install dependencies
+**Step 2: Install dependencies**
+```cmd
 pip install blessed psutil
+```
 
-# Run the dashboard
+**Step 3: Run DEATH STAR**
+```cmd
+# Demo mode (no firewall setup needed)
+python dashboard.py --demo --theme matrix
+
+# OR with real firewall logs (requires admin)
 python dashboard.py --theme matrix
 ```
 
-**Note:** When running the Python script directly, you'll need to run your terminal as Administrator to access real firewall logs. Otherwise, use `--demo` mode for simulated traffic.
+**🎯 Want the EXE version?**
+1. Run `build.bat` to create `dist\DEATH_STAR.exe`
+2. Double-click the EXE and allow admin access
+3. Done!
+
+---
+
+### 🐧 **LINUX INSTALLATION (Kali/Debian/Ubuntu)**
+
+**Step 1: Clone the repository**
+```bash
+git clone https://github.com/Ringmast4r/DEATH_STAR.git
+cd DEATH_STAR
+```
+
+**Step 2: Install dependencies**
+
+**Option A - via apt (recommended for Kali/Debian/Ubuntu):**
+```bash
+sudo apt install python3-blessed python3-psutil
+```
+
+**Option B - via pip (if apt packages not available):**
+```bash
+pip3 install blessed psutil --break-system-packages
+```
+
+**Step 3: Run DEATH STAR**
+```bash
+# Demo mode (no firewall setup needed)
+python3 dashboard.py --demo --theme matrix
+
+# OR with real firewall logs (requires sudo)
+sudo python3 dashboard.py --theme matrix
+```
+
+---
+
+### 🍎 **macOS INSTALLATION**
+
+**Step 1: Clone the repository**
+```bash
+git clone https://github.com/Ringmast4r/DEATH_STAR.git
+cd DEATH_STAR
+```
+
+**Step 2: Install dependencies**
+```bash
+pip3 install blessed psutil
+```
+
+**Step 3: Run DEATH STAR**
+```bash
+# Demo mode (no firewall setup needed)
+python3 dashboard.py --demo --theme matrix
+
+# OR with real firewall logs (requires sudo)
+sudo python3 dashboard.py --theme matrix
+```
+
+---
+
+### 🎨 Available Themes
+
+Try different color schemes:
+- `--theme matrix` - Green hacker aesthetic (default)
+- `--theme rainbow` - 7-color spectrum
+- `--theme skittles` - 16 random candy colors
+- `--theme dracula` - Dark with magenta
+- `--theme nord` - Cool cyan
+- `--theme amber` - Retro orange CRT
+- `--theme mono` - Black & white
+
+**Press 'T' while running to cycle through themes!**
+
+---
 
 ### Windows: Enable Firewall Logging
 
