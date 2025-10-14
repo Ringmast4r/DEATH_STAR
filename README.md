@@ -235,10 +235,10 @@ pip install blessed psutil
 **Step 3: Run DEATH STAR**
 ```cmd
 # Demo mode (no firewall setup needed)
-python dashboard.py --demo --theme matrix
+python dashboard.py --demo
 
 # OR with real firewall logs (requires admin)
-python dashboard.py --theme matrix
+python dashboard.py
 ```
 
 **🎯 Want the EXE version?**
@@ -271,10 +271,10 @@ pip3 install blessed psutil --break-system-packages
 **Step 3: Run DEATH STAR**
 ```bash
 # Demo mode (no firewall setup needed)
-python3 dashboard.py --demo --theme matrix
+python3 dashboard.py --demo
 
 # OR with real firewall logs (requires sudo)
-sudo python3 dashboard.py --theme matrix
+sudo python3 dashboard.py
 ```
 
 ---
@@ -295,10 +295,10 @@ pip3 install blessed psutil
 **Step 3: Run DEATH STAR**
 ```bash
 # Demo mode (no firewall setup needed)
-python3 dashboard.py --demo --theme matrix
+python3 dashboard.py --demo
 
 # OR with real firewall logs (requires sudo)
-sudo python3 dashboard.py --theme matrix
+sudo python3 dashboard.py
 ```
 
 ---
