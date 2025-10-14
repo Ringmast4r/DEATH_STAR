@@ -2148,7 +2148,9 @@ class Dashboard:
         output.append('\033[?25l')
 
         # Single write to stdout (like tcell's Show())
-        print(''.join(output), end='', flush=True)
+        # Force flush on Linux terminals for smoother animation
+        sys.stdout.write(''.join(output))
+        sys.stdout.flush()
 
     def update_system_info(self):
         """Update system info in background thread"""
@@ -2239,6 +2241,10 @@ class Dashboard:
         # Enter fullscreen mode ONCE, hide cursor ONCE
         # Use explicit ANSI escape code for cursor hiding (more reliable than blessed)
         print('\033[?25l', end='', flush=True)  # Hide cursor
+
+        # Clear screen once at start for Linux compatibility
+        print('\033[2J\033[H', end='', flush=True)
+
         with self.term.fullscreen(), self.term.hidden_cursor():
             try:
                 while self.running:
