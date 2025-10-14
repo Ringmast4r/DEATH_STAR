@@ -2206,20 +2206,53 @@ class Dashboard:
 
             conn1 = Connection()
             conn1.ip = '192.168.1.100'
+            conn1.dst_ip = '10.0.0.1'
+            conn1.port = '22'
+            conn1.protocol = 'TCP'
             conn1.username = 'SSH'
             conn1.password = 'TCP'
+            conn1.timestamp = datetime.now().strftime('%H:%M:%S')
+            conn1.country = 'US'
+            conn1.city = 'Unknown'
+            conn1.isp = 'Local'
+            conn1.threat_level = 'SAFE'
+            conn1.attack_type = 'PROBE'
+            conn1.status = 'BLOCKED'
+            conn1.service = 'SSH'
             self.connections.append(conn1)
 
             conn2 = Connection()
             conn2.ip = '10.0.0.55'
+            conn2.dst_ip = '10.0.0.1'
+            conn2.port = '3389'
+            conn2.protocol = 'TCP'
             conn2.username = 'RDP'
             conn2.password = 'TCP'
+            conn2.timestamp = datetime.now().strftime('%H:%M:%S')
+            conn2.country = 'US'
+            conn2.city = 'Unknown'
+            conn2.isp = 'Local'
+            conn2.threat_level = 'SAFE'
+            conn2.attack_type = 'PROBE'
+            conn2.status = 'BLOCKED'
+            conn2.service = 'RDP'
             self.connections.append(conn2)
 
             conn3 = Connection()
             conn3.ip = '172.16.0.99'
+            conn3.dst_ip = '10.0.0.1'
+            conn3.port = 'MULTI'
+            conn3.protocol = 'TCP'
             conn3.username = 'PORT SCAN'
             conn3.password = '8 ports'
+            conn3.timestamp = datetime.now().strftime('%H:%M:%S')
+            conn3.country = 'US'
+            conn3.city = 'Unknown'
+            conn3.isp = 'Local'
+            conn3.threat_level = 'UNKNOWN'
+            conn3.attack_type = 'SCAN'
+            conn3.status = 'BLOCKED'
+            conn3.service = 'SCAN'
             self.connections.append(conn3)
 
         # Initialize system info immediately (especially for screenshot mode)
